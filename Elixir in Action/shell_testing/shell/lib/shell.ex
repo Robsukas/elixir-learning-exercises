@@ -1,9 +1,35 @@
 defmodule Shell do
-  @pi 3.14159
+  import IO
 
-  # Use the pi attribute to calculate circle area.
-  def area(r), do: r * r * @pi
+  def numbers do
+    puts "---------------------------------------------------"
+    puts "Integer"
+    puts 17
+    puts "---------------------------------------------------"
+    puts "Integer written in HEX"
+    puts 0xEF
+    puts "---------------------------------------------------"
+    puts "Float"
+    puts 9.8
+    puts "---------------------------------------------------"
+    puts "Float with exponential notation"
+    puts 99.0e-5
+    puts "---------------------------------------------------"
+  end
 
-  # Use the pi attribute to calculate circle circumference.
-  def circumference(r), do: 2 * r * @pi
+  def arithmetic do
+    puts "---------------------------------------------------"
+    puts "Returns an integer (5 + 3 * 10)"
+    puts 5 + 3 * 10
+    puts "---------------------------------------------------"
+    puts "Always returns a float (10 / 5)"
+    puts 10 / 5
+    puts "---------------------------------------------------"
+    puts "Integer division (4 // 2)"
+    puts div(4, 2)
+    puts "---------------------------------------------------"
+    puts "Integer remainder (35 % 3)"
+    puts rem(35, 3)
+    puts "---------------------------------------------------"
+  end
 end
