@@ -1,18 +1,11 @@
 defmodule Shell do
-  @moduledoc """
-  Documentation for `Shell`.
-  """
+  # Private and public function calls.
+  def double(a) do
+    add_priv(a, a)
+  end
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Shell.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  # Can't directly call this from the iex.
+  defp add_priv(a, b) do
+    a + b
   end
 end
