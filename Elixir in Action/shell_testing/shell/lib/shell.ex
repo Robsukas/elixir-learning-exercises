@@ -5,24 +5,12 @@ defmodule Shell do
   # Also the code wasn't that well readable with those anyway.
   # With this I also make the workflow more time-efficient.
 
-  def strings do
-    puts "String"
-    puts "Embedded string: #{3 + 0.14}"
-    puts "
-    Multiline
-    String
-    ."
+  def character_list do
+    puts 'ABC'
+    puts [65, 66, 67]
+    string = "String"
+    charlist = String.to_charlist(string)
+    puts string == charlist
 
-    # Sigils
-    puts ~s("Hello world!")
-
-    # Heredoc
-    puts """
-    This is a
-    heredoc
-    """
-
-    # String concatenation
-    puts "Hello" <> " " <> "World!"
   end
 end
