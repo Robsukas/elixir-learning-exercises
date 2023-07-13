@@ -1,21 +1,3 @@
 # Cards
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `cards` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:cards, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/cards>.
-
+**This project is a simple program that has multiple functions for working with a deck of playing cards(Jokers not included). This program was my first time meddling with Elixir so expect a bit of clutter.**
