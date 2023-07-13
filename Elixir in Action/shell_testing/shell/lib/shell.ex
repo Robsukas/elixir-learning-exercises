@@ -1,17 +1,9 @@
 defmodule Shell do
-  alias IO, as: NewIO
-  alias Shell.Second # Second is used as alias
+  @pi 3.14159
 
-  # Using the new alias for the IO module.
-  def fun do
-    NewIO.puts "Hi!"
-    Second.fun()
-  end
-end
+  # Use the pi attribute to calculate circle area.
+  def area(r), do: r * r * @pi
 
-
-defmodule Shell.Second do
-  def fun do
-    2 + 2
-  end
+  # Use the pi attribute to calculate circle circumference.
+  def circumference(r), do: 2 * r * @pi
 end
