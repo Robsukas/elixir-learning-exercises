@@ -1,15 +1,22 @@
 defmodule Shell do
   import IO
 
-  def atoms do
+  def booleans do
     puts "---------------------------------------------------"
-    puts "Atoms"
-    puts :atom
-    puts :another_atom
-    puts :"an atom with spaces"
+    puts ":true == true"
+    puts :true == true
     puts "---------------------------------------------------"
-    puts "Atoms are used for naming constants"
-    puts variable = :variable
+    puts ":false == false"
+    puts :false == false
+    puts "---------------------------------------------------"
+    puts "true and false"
+    puts true and false
+    puts "---------------------------------------------------"
+    puts "true or false"
+    puts true or false
+    puts "---------------------------------------------------"
+    puts "not false:"
+    puts not false
     puts "---------------------------------------------------"
   end
 end
