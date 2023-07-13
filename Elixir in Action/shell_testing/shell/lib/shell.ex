@@ -1,8 +1,8 @@
 defmodule Shell do
-  import IO
+  alias IO, as: NewIO
 
-  # Can use puts function without the IO. notation.
+  # Using the new alias for the IO module.
   def fun do
-    puts "I called this function without the IO. notation."
+    NewIO.puts "Hi!"
   end
 end
