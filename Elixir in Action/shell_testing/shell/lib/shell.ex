@@ -5,17 +5,24 @@ defmodule Shell do
   # Also the code wasn't that well readable with those anyway.
   # With this I also make the workflow more time-efficient.
 
-  def maps_with_atom_keys do
-    # When the keys are atoms, you can construct a map in a more simple and cleaner manner.
-    person = %{:name => "Robin", :age => 20, :works_at => "Yolo"}
-    person = %{name: "Robin", age: 20, works_at: "Yolo"}
-    IO.inspect(person)
-    puts ""
-    # Again atoms get special syntax treatment
-    puts person[:name]
-    puts person.name
-    puts ""
-    # Changing data in maps
-    IO.inspect(%{person | age: 30, works_at: "Home"})
+  def strings do
+    puts "String"
+    puts "Embedded string: #{3 + 0.14}"
+    puts "
+    Multiline
+    String
+    ."
+
+    # Sigils
+    puts ~s("Hello world!")
+
+    # Heredoc
+    puts """
+    This is a
+    heredoc
+    """
+
+    # String concatenation
+    puts "Hello" <> " " <> "World!"
   end
 end
