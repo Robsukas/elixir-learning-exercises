@@ -1,6 +1,6 @@
-defmodule Test do
+defmodule Shell do
   @moduledoc """
-  Documentation for `Test`.
+  Documentation for `Shell`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Test do
 
   ## Examples
 
-      iex> Test.hello()
+      iex> Shell.hello()
       :world
 
   """
