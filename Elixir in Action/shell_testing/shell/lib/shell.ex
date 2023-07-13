@@ -1,11 +1,8 @@
 defmodule Shell do
-  # Private and public function calls.
-  def double(a) do
-    add_priv(a, a)
-  end
+  import IO
 
-  # Can't directly call this from the iex.
-  defp add_priv(a, b) do
-    a + b
+  # Can use puts function without the IO. notation.
+  def fun do
+    puts "I called this function without the IO. notation."
   end
 end
