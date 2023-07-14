@@ -1,21 +1,5 @@
 # Exercises
 
-**TODO: Add description**
+**In this directory I am working with the Elixir course and it's exercises from the Exercism website. I do these exercises alongside reading the "Elixir in Action" book to actively force myself to try out new concepts in Elixir. **
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `exercises` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:exercises, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/exercises>.
-
+**If you have any questions, tips or pointers, please contact me on Slack!**
