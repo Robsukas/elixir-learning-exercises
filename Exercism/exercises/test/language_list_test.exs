@@ -5,6 +5,8 @@ defmodule LanguageListTest do
     assert LanguageList.new() == []
   end
 
+  # ----------------------------------------------------------------------------
+
   test "add/2 add a language to a list" do
     language = "Elixir"
     list = [language]
@@ -24,6 +26,8 @@ defmodule LanguageListTest do
     assert list == ["Elixir", "F#", "Erlang", "Haskell", "Clojure"]
   end
 
+  # ----------------------------------------------------------------------------
+
   test "remove/1 add then remove results in empty list" do
     list = LanguageList.new()
     |> LanguageList.add("Elixir")
@@ -41,6 +45,8 @@ defmodule LanguageListTest do
     assert list == ["F#"]
   end
 
+  # ----------------------------------------------------------------------------
+
   test "first/1 add one language, then get the first" do
     assert LanguageList.new()
     |> LanguageList.add("Elixir")
@@ -57,6 +63,8 @@ defmodule LanguageListTest do
 
     assert first == "F#"
   end
+
+  # ----------------------------------------------------------------------------
 
   test "functional_list?/1 a functional language list" do
     assert LanguageList.functional_list?(["Clojure", "Haskell", "Erlang", "F#", "Elixir"])

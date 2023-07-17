@@ -17,6 +17,8 @@ defmodule RulesTest do
     refute Rules.eat_ghost?(false, false)
   end
 
+  # ----------------------------------------------------------------------------
+
   test "score?/2 score when eating dot" do
     assert Rules.score?(false, true)
   end
@@ -29,6 +31,8 @@ defmodule RulesTest do
     refute Rules.score?(false, false)
   end
 
+  # ----------------------------------------------------------------------------
+
   test "lose?/2 lose if touching a ghost without a power pellet active" do
     assert Rules.lose?(false, true)
   end
@@ -40,6 +44,8 @@ defmodule RulesTest do
   test "lose?/2 don't lose if not touching a ghost" do
     refute Rules.lose?(true, false)
   end
+
+  # ----------------------------------------------------------------------------
 
   test "win?/3 win if all dots eaten" do
     assert Rules.win?(true, false, false)

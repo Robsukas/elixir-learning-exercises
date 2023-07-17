@@ -11,6 +11,8 @@ defmodule SecretsTest do
     assert add.(9) === 15
   end
 
+  # ----------------------------------------------------------------------------
+
   test "secret_subtract subtract 3" do
     subtract = Secrets.secret_subtract(3)
     assert subtract.(6) === 3
@@ -20,6 +22,8 @@ defmodule SecretsTest do
     subtract = Secrets.secret_subtract(6)
     assert subtract.(3) === -3
   end
+
+  # ----------------------------------------------------------------------------
 
   test "secret_multiply multiply by 3" do
     multiply = Secrets.secret_multiply(3)
@@ -31,6 +35,8 @@ defmodule SecretsTest do
     assert multiply.(7) === 42
   end
 
+  # ----------------------------------------------------------------------------
+
   test "secret_divide divide by 3" do
     divide = Secrets.secret_divide(3)
     assert divide.(6) === 2
@@ -40,6 +46,8 @@ defmodule SecretsTest do
     divide = Secrets.secret_divide(6)
     assert divide.(7) === 1
   end
+
+  # ----------------------------------------------------------------------------
 
   test "secret_and 2 and 1" do
     ander = Secrets.secret_and(1)
@@ -51,6 +59,8 @@ defmodule SecretsTest do
     assert ander.(7) === 7
   end
 
+  # ----------------------------------------------------------------------------
+
   test "secret_xor 2 xor 1" do
     xorer = Secrets.secret_xor(1)
     assert xorer.(2) === 3
@@ -60,6 +70,8 @@ defmodule SecretsTest do
     xorer = Secrets.secret_xor(7)
     assert xorer.(7) === 0
   end
+
+  # ----------------------------------------------------------------------------
 
   test "secret_combine 5 add 10 then subtract 5" do
     f = Secrets.secret_add(10)
