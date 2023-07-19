@@ -11,7 +11,7 @@ defmodule LibraryFeesTest do
     assert result == ~N[2019-12-24 13:15:45Z]
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "before_noon?/1 returns true if the given NaiveDateTime is before 12:00" do
     assert LibraryFees.before_noon?(~N[2020-06-06 11:59:59Z]) == true
@@ -25,7 +25,7 @@ defmodule LibraryFeesTest do
     assert LibraryFees.before_noon?(~N[2018-11-17 12:00:00Z]) == false
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "return_date/1 adds 28 days if the given NaiveDateTime is before 12:00" do
     result = LibraryFees.return_date(~N[2020-02-14 11:59:59Z])
@@ -42,7 +42,7 @@ defmodule LibraryFeesTest do
     assert result == ~D[2018-12-30]
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "days_late/2 returns 0 when identical datetimes" do
     result = LibraryFees.days_late(~D[2021-02-01], ~N[2021-02-01 12:00:00Z])
@@ -71,7 +71,7 @@ defmodule LibraryFeesTest do
     assert result == 1
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "monday? 2021-02-01 was a Monday" do
     assert LibraryFees.monday?(~N[2021-02-01 14:01:00Z]) == true
@@ -97,7 +97,7 @@ defmodule LibraryFeesTest do
     assert LibraryFees.monday?(~N[2019-04-28 11:37:12Z]) == false
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "calculate_late_fee/2 returns 0 if the book was returned less than 28 days after a morning checkout" do
     result = LibraryFees.calculate_late_fee("2018-11-01T09:00:00Z", "2018-11-13T14:12:00Z", 123)
