@@ -37,6 +37,29 @@ defmodule WineCellarTest do
     assert WineCellar.filter(cellar, :rose) == [{"Dornfelder", 2018, "Germany"}]
   end
 
+  test "filter/3 filters the cellar based on the chosen color when :color is not provided" do
+    cellar = [
+      white: {"Chardonnay", 2015, "Italy"},
+      white: {"Chardonnay", 2014, "France"},
+      rose: {"Dornfelder", 2018, "Germany"},
+      red: {"Merlot", 2015, "France"},
+      white: {"Riesling ", 2017, "Germany"},
+      white: {"Pinot grigio", 2015, "Germany"},
+      red: {"Pinot noir", 2016, "France"},
+      red: {"Pinot noir", 2013, "Italy"}
+    ]
+
+    # Filtering by the :white color
+    expected_result = [
+      {"Chardonnay", 2015, "Italy"},
+      {"Chardonnay", 2014, "France"},
+      {"Riesling ", 2017, "Germany"},
+      {"Pinot grigio", 2015, "Germany"}
+    ]
+
+    assert WineCellar.filter(cellar, :white) == expected_result
+  end
+
   # ----------------------------------------------------------------------------
 
   test "filter/3 filters wines of chosen color by year" do

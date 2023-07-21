@@ -3,11 +3,6 @@ defmodule Form do
   A collection of loosely related functions helpful for filling out various forms at the city office.
   """
 
-  # !!!!!!!!!!!!!!!!
-  # This module does not have tests, because the exercise consisted of implementing documentation
-  # and typespec, both of which are quite hard to test.
-  # !!!!!!!!!!!!!!!!
-
   @doc """
   Generates a string of a given length.
 

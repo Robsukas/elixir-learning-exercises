@@ -24,4 +24,8 @@ defmodule NameBadgeTest do
   test "print/3 prints the owner badge without id" do
     assert NameBadge.print(nil, "Stephen Dann", nil) == "Stephen Dann - OWNER"
   end
+
+  test "print/3 prints the employee badge with only name" do
+    assert NameBadge.print("John Doe") == "John Doe - OWNER"
+  end
 end

@@ -66,6 +66,28 @@ defmodule LanguageListTest do
 
   # ----------------------------------------------------------------------------
 
+  test "count/1 the count of a new list is 0" do
+    assert LanguageList.new() |> LanguageList.count() == 0
+  end
+
+  test "count/1 the count of a one-language list is 1" do
+    count = LanguageList.new() |> LanguageList.add("Elixir") |> LanguageList.count()
+    assert count == 1
+  end
+
+  test "count/1 the count of a multiple-item list is equal to its length" do
+    count =
+      LanguageList.new()
+      |> LanguageList.add("Elixir")
+      |> LanguageList.add("Prolog")
+      |> LanguageList.add("F#")
+      |> LanguageList.count()
+
+    assert count == 3
+  end
+
+  # ----------------------------------------------------------------------------
+
   test "functional_list?/1 a functional language list" do
     assert LanguageList.functional_list?(["Clojure", "Haskell", "Erlang", "F#", "Elixir"])
   end
