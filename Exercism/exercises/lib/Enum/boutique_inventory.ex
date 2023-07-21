@@ -28,6 +28,6 @@ defmodule BoutiqueInventory do
 
   def total_quantity(item) do
     sizes = item[:quantity_by_size]
-    Enum.reduce(Map.values(sizes), 0, &+/2 end)
+    Enum.reduce(Map.values(sizes), 0, &+/2)
   end
 end
