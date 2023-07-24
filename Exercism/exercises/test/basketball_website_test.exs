@@ -134,7 +134,7 @@ defmodule BasketballWebsiteTest do
       ) == nil
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "get_in_path retrieves from first layer" do
     team_data = %{"coach" => %{}, "team_name" => "Hoop Masters", "players" => %{}}

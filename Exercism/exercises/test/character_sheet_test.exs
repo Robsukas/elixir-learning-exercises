@@ -7,7 +7,7 @@ defmodule CharacterSheetTest do
     assert io == "Welcome! Let's fill out your character sheet together.\n"
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "ask_name/0 it prints a prompt" do
     io = capture_io("\n", fn -> CharacterSheet.ask_name() end)
@@ -20,7 +20,7 @@ defmodule CharacterSheetTest do
     end)
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "ask_class/0 it prints a prompt" do
     io = capture_io("\n", fn -> CharacterSheet.ask_class() end)
@@ -31,7 +31,7 @@ defmodule CharacterSheetTest do
     capture_io("rogue\n", fn -> assert CharacterSheet.ask_class() == "rogue" end)
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "ask_level/0 it prints a prompt" do
     io = capture_io("1\n", fn -> CharacterSheet.ask_level() end)
@@ -42,7 +42,7 @@ defmodule CharacterSheetTest do
     capture_io("3\n", fn -> assert CharacterSheet.ask_level() == 3 end)
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "run/0 it asks for name, class, and level" do
     io = capture_io("Susan The Fearless\nfighter\n6\n", fn -> CharacterSheet.run() end)
