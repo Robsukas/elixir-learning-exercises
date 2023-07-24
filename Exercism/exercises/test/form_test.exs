@@ -5,9 +5,13 @@ defmodule FormTest do
     assert Form.blanks(5) == "XXXXX"
   end
 
+  # ----------------------------------------------------------------------------
+
   test "letters/1 returns a list of uppercase letters from the word" do
     assert Form.letters("Hello") == ["H", "E", "L", "L", "O"]
   end
+
+  # ----------------------------------------------------------------------------
 
   test "check_length/2 returns :ok when the word length is within the limit" do
     assert Form.check_length("Short", 10) == :ok
@@ -16,6 +20,8 @@ defmodule FormTest do
   test "check_length/2 returns {:error, diff} when the word length exceeds the limit" do
     assert Form.check_length("TooLong", 5) == {:error, 2}
   end
+
+  # ----------------------------------------------------------------------------
 
   test "format_address/1 formats the address map as an uppercase multiline string" do
     address_map = %{
