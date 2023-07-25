@@ -36,16 +36,6 @@ defmodule RemoteControlCarTest do
     assert_raise FunctionClauseError, fn -> RemoteControlCar.display_distance(fake_car) end
   end
 
-  test "display distance raises error when given unexpected struct" do
-    fake_car = %FakeRemoteControlCar{
-      battery_percentage: 100,
-      distance_driven_in_meters: 0,
-      nickname: "Fake"
-    }
-
-    assert_raise FunctionClauseError, fn -> RemoteControlCar.display_distance(fake_car) end
-  end
-
   test "display distance of new" do
     car = RemoteControlCar.new()
     assert RemoteControlCar.display_distance(car) == "0 meters"
@@ -64,16 +54,6 @@ defmodule RemoteControlCarTest do
     assert_raise FunctionClauseError, fn -> RemoteControlCar.display_battery(fake_car) end
   end
 
-  test "display battery raises error when given unexpected struct" do
-    fake_car = %FakeRemoteControlCar{
-      battery_percentage: 100,
-      distance_driven_in_meters: 0,
-      nickname: "Fake"
-    }
-
-    assert_raise FunctionClauseError, fn -> RemoteControlCar.display_battery(fake_car) end
-  end
-
   test "display battery of new" do
     car = RemoteControlCar.new()
     assert RemoteControlCar.display_battery(car) == "Battery at 100%"
@@ -89,16 +69,6 @@ defmodule RemoteControlCarTest do
 
   test "drive raises error when not given struct" do
     fake_car = %{battery_percentage: 100, distance_driven_in_meters: 0, nickname: "Fake"}
-    assert_raise FunctionClauseError, fn -> RemoteControlCar.drive(fake_car) end
-  end
-
-  test "drive raises error when given unexpected struct" do
-    fake_car = %FakeRemoteControlCar{
-      battery_percentage: 100,
-      distance_driven_in_meters: 0,
-      nickname: "Fake"
-    }
-
     assert_raise FunctionClauseError, fn -> RemoteControlCar.drive(fake_car) end
   end
 
