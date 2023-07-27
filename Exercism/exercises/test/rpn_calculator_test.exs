@@ -13,7 +13,7 @@ defmodule RPNCalculatorTest do
     assert_raise RuntimeError, fn -> RPNCalculator.calculate!([], fn _ -> raise "test error" end) end
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "calculate returns the result of the operation (a string) wrapped in an :ok tuple" do
     assert RPNCalculator.calculate([], fn _ -> "operation completed" end) ==
@@ -28,7 +28,7 @@ defmodule RPNCalculatorTest do
     assert RPNCalculator.calculate([], fn _ -> raise "test error" end) == :error
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "calculate_verbose returns the result of the operation (a string) wrapped in an :ok tuple" do
     assert RPNCalculator.calculate_verbose([], fn _ -> "operation completed" end) ==

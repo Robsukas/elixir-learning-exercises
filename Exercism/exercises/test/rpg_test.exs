@@ -5,7 +5,7 @@ defmodule RPGTest do
     assert RPG.Edible.__protocol__(:functions) == [eat: 2]
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "LoafOfBread eating it increases health" do
     character = %RPG.Character{health: 50}
@@ -25,7 +25,7 @@ defmodule RPGTest do
     assert character.mana == 77
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "ManaPotion eating it increases mana" do
     character = %RPG.Character{mana: 10}
@@ -47,7 +47,7 @@ defmodule RPGTest do
     assert character.health == 4
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "Poison eating it brings health down to 0" do
     character = %RPG.Character{health: 120}
