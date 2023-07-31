@@ -15,7 +15,7 @@ defmodule NewPassportTest do
     assert {:ok, _} = NewPassport.get_new_passport(~N[2021-10-11 15:00:00], ~D[1984-09-14], :blue)
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "find the right counter information staff on coffee break" do
     assert NewPassport.get_new_passport(~N[2021-10-11 14:10:00], ~D[1984-09-14], :blue) ==
@@ -36,7 +36,7 @@ defmodule NewPassportTest do
       {:error, "city office is closed"}
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "get the passport form stamped illegal form color" do
     assert NewPassport.get_new_passport(
@@ -55,7 +55,7 @@ defmodule NewPassportTest do
     assert {:ok, _} = NewPassport.get_new_passport(~N[2021-10-11 14:25:00], ~D[1984-09-14], :blue)
   end
 
-
+  # ----------------------------------------------------------------------------
 
   test "receive the new passport number get the right timestamp" do
     assert {:ok, passport_number} =
