@@ -1,21 +1,7 @@
 # AuctionUmbrella
 
-**TODO: Add description**
+**In this directory I am mainly working with the book Phoenix in Action and creating a functioning auction site using Elixir and Phoenix.** 
+**If you have any insights or would like to point out some mistakes I might have made, please, feel free to send them to me on Slack.**
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `auction_umbrella` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:auction_umbrella, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/auction_umbrella>.
-
+...
