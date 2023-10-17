@@ -19,8 +19,5 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
-# Ignore package tarball (built via "mix hex.build").
-auction_umbrella-*.tar
-
 # Temporary files, for example, from tests.
 /tmp/
