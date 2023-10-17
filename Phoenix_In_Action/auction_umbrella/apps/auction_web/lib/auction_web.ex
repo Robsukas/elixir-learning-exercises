@@ -1,6 +1,6 @@
-defmodule AuctionUmbrella do
+defmodule AuctionWeb do
   @moduledoc """
-  Documentation for `AuctionUmbrella`.
+  Documentation for `AuctionWeb`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule AuctionUmbrella do
 
   ## Examples
 
-      iex> AuctionUmbrella.hello()
+      iex> AuctionWeb.hello()
       :world
 
   """
