@@ -1,4 +1,4 @@
-defmodule AuctionWeb.Telemetry do
+defmodule AuctionWebWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -63,7 +63,7 @@ defmodule AuctionWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {AuctionWeb, :count_users, []}
+      # {AuctionWebWeb, :count_users, []}
     ]
   end
 end

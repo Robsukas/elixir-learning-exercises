@@ -8,11 +8,15 @@ defmodule AuctionWeb.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      AuctionWeb.Telemetry,
+      AuctionWebWeb.Telemetry,
+      {DNSCluster, query: Application.get_env(:auction_web, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: AuctionWeb.PubSub},
+      # Start the Finch HTTP client for sending emails
+      {Finch, name: AuctionWeb.Finch},
       # Start a worker by calling: AuctionWeb.Worker.start_link(arg)
       # {AuctionWeb.Worker, arg},
       # Start to serve requests, typically the last entry
-      AuctionWeb.Endpoint
+      AuctionWebWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -25,7 +29,7 @@ defmodule AuctionWeb.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    AuctionWeb.Endpoint.config_change(changed, removed)
+    AuctionWebWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

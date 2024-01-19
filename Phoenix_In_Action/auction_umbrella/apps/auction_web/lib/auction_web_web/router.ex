@@ -1,11 +1,11 @@
-defmodule AuctionWeb.Router do
-  use AuctionWeb, :router
+defmodule AuctionWebWeb.Router do
+  use AuctionWebWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {AuctionWeb.Layouts, :root}
+    plug :put_root_layout, html: {AuctionWebWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,15 +14,14 @@ defmodule AuctionWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", AuctionWeb do
+  scope "/", AuctionWebWeb do
     pipe_through :browser
 
     get "/", PageController, :home
-    resources "/items", ItemController, only: [:index]
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", AuctionWeb do
+  # scope "/api", AuctionWebWeb do
   #   pipe_through :api
   # end
 
@@ -38,7 +37,7 @@ defmodule AuctionWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: AuctionWeb.Telemetry
+      live_dashboard "/dashboard", metrics: AuctionWebWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
