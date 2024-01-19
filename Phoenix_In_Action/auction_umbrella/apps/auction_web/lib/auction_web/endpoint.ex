@@ -1,4 +1,4 @@
-defmodule AuctionWebWeb.Endpoint do
+defmodule AuctionWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :auction_web
 
   # The session will be stored in the cookie and signed,
@@ -7,7 +7,7 @@ defmodule AuctionWebWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_auction_web_key",
-    signing_salt: "DyM3+i6k",
+    signing_salt: "HCXtQsGW",
     same_site: "Lax"
   ]
 
@@ -21,7 +21,7 @@ defmodule AuctionWebWeb.Endpoint do
     at: "/",
     from: :auction_web,
     gzip: false,
-    only: AuctionWebWeb.static_paths()
+    only: AuctionWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -46,5 +46,5 @@ defmodule AuctionWebWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug AuctionWebWeb.Router
+  plug AuctionWeb.Router
 end

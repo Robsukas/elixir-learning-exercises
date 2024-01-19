@@ -1,4 +1,4 @@
-defmodule AuctionWebWeb.CoreComponents do
+defmodule AuctionWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -17,7 +17,7 @@ defmodule AuctionWebWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import AuctionWebWeb.Gettext
+  import AuctionWeb.Gettext
 
   @doc """
   Renders a modal.
@@ -659,9 +659,9 @@ defmodule AuctionWebWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(AuctionWebWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(AuctionWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(AuctionWebWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(AuctionWeb.Gettext, "errors", msg, opts)
     end
   end
 
