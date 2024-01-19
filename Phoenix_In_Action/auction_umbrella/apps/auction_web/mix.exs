@@ -38,6 +38,7 @@ defmodule AuctionWeb.MixProject do
     [
       {:phoenix, "~> 1.7.9"},
       {:phoenix_html, "~> 3.3"},
+      {:phoenix_ecto, "~> 4.4"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.20.1"},
       {:floki, ">= 0.30.0", only: :test},
@@ -49,7 +50,8 @@ defmodule AuctionWeb.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:auction, in_umbrella: true}
+      {:auction, in_umbrella: true},
+      {:swoosh, "~> 1.14"}
     ]
   end
 

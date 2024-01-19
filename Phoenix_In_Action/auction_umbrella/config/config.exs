@@ -109,6 +109,17 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
 
+# Configure Ecto Repos
+config :auction, ecto_repos: [Auction.Repo]
+
+# Configure your database
+config :auction, Auction.Repo,
+  username: "robin.nook",
+  password: "postgres",
+  database: "auction",
+  hostname: "localhost",
+  port: 5432
+
 # Sample configuration:
 #
 #     config :logger, :console,
