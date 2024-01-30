@@ -36,7 +36,7 @@ defmodule AuctionWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.9"},
+      {:phoenix, "~> 1.7.10"},
       {:phoenix_html, "~> 3.3"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
