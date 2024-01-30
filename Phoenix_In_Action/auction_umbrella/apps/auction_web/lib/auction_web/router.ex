@@ -19,7 +19,7 @@ defmodule AuctionWeb.Router do
 
     get "/", PageController, :home
 
-    resources "/items", ItemController, only: [:index]
+    resources "/items", ItemController, only: [:index, :show]
   end
 
   # Other scopes may use custom stacks.
