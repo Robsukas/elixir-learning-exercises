@@ -1,6 +1,6 @@
 <%= for item <- @items do %>
   <li>
-    <%= link item.title, to: "/items/#{item.id}" %>
+    <%= link(item.title, to: AuctionWeb.Router.Helpers.item_path(@conn, :show, item)) %>
     - <%= item.description %>
   </li>
 <% end %>

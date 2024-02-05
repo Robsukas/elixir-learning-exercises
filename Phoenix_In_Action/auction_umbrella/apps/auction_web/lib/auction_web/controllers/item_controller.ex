@@ -16,4 +16,23 @@ defmodule AuctionWeb.ItemController do
     render(conn, "new.html", item: item)
   end
 
+  def create(conn, %{"item" => item_params}) do
+    case Auction.insert_item(item_params) do
+      {:ok, item} -> redirect(conn, to: AuctionWeb.Router.Helpers.item_path(conn, :show, item))
+      {:error, item} -> render(conn, "new.html", item: item)
+    end
+  end
+
+  def edit(conn, %{"id" => id}) do
+    {item, changeset} = Auction.edit_item(id)
+    render(conn, "edit.html", item: item, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "item" => item_params}) do
+    item = Auction.get_item(id)
+    case Auction.update_item(item, item_params) do
+      {:ok, item} -> redirect(conn, to: AuctionWeb.Router.Helpers.item_path(conn, :show, item))
+      {:error, item} -> render(conn, "edit.html", item: item)
+    end
+  end
 end
