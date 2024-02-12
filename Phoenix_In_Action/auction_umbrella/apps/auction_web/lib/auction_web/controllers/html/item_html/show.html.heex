@@ -6,3 +6,33 @@
   <li><strong>Description:</strong> <%= @item.description %></li>
   <li><strong>Auction ends at:</strong> <%= @item.ends_at %></li>
 </ul>
+
+<div style="display: flex; flex-direction: row;">
+  <div style="flex: 1;">
+    <h2>Current bids</h2>
+    <%= for bid <- @item.bids do %>
+      <p><%= integer_to_currency(bid.amount) %> <em>from <%= bid.user.username %></em></p>
+    <% end %>
+  </div>
+
+  <div style="flex: 1;">
+    <%= if @current_user do %>
+      <h2>Place your bid!</h2>
+      <%= form_for @bid, AuctionWeb.Router.Helpers.item_bid_path(@conn, :create, @item), fn f -> %>
+        <%= if @bid.action do %>
+          <div class="alert alert-danger">
+            Unfortunately, there are errors in your
+            submission. Please correct them below.
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= label f, :amount, "Bid amount", class: "control-label" %>
+          <%= number_input f, :amount, class: "form-control" %>
+        </div>
+
+        <%= submit "Submit", class: "btn btn-primary"%>
+      <% end %>
+    <% end %>
+  </div>
+</div>
