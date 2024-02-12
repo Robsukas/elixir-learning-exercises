@@ -21,6 +21,19 @@
     </div>
   </div>
 </header>
+<div class="container" style="border-bottom: 1px solid #777777;
+     margin-bottom: 2rem; padding-bottom: 1rem;">
+  <%= link "Items", to: AuctionWeb.Router.Helpers.item_path(@conn, :index) %>
+  |
+  <%= if @current_user do %>
+    Logged in as <%= link @current_user.username, 
+    to: AuctionWeb.Router.Helpers.user_path(@conn, :show, @current_user) %>
+    |
+    <%= link "Log out", to: AuctionWeb.Router.Helpers.session_path(@conn, :delete), method: :delete %>
+  <% else %>
+    <%= link "login", to: AuctionWeb.Router.Helpers.session_path(@conn, :new) %>
+  <% end %>
+</div>
 <main class="px-4 py-20 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-2xl">
     <.flash_group flash={@flash} />
