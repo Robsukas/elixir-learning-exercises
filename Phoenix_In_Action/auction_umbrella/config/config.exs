@@ -17,7 +17,7 @@
 import Config
 
 config :auction_web,
-  generators: [context_app: false]
+  generators: [context_app: true]
 
 # Configures the endpoint
 config :auction_web, AuctionWeb.Endpoint,
