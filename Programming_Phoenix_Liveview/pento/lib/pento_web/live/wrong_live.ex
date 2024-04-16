@@ -2,9 +2,19 @@ defmodule PentoWeb.WrongLive do
   use PentoWeb, :live_view
 
   @spec mount(any(), any(), any()) :: {:ok, any()}
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
     random_number = Enum.random(1..10)
-    {:ok, assign(socket, score: 0, message: "Make a guess:", number_to_guess: random_number, time: time())}
+    {
+      :ok,
+      assign(
+        socket,
+        score: 0,
+        message: "Make a guess:",
+        number_to_guess: random_number,
+        time: time(),
+        session_id: session["live_socket_id"]
+      )
+    }
   end
 
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
