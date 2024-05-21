@@ -14,7 +14,10 @@
 >
   <:col :let={{_id, faq}} label="Question"><%= faq.question %></:col>
   <:col :let={{_id, faq}} label="Answer"><%= faq.answer %></:col>
-  <:col :let={{_id, faq}} label="Vote count"><%= faq.vote_count %></:col>
+  <:col :let={{_id, faq}} label="Vote count">
+    <%= faq.vote_count %>
+    <button phx-click="vote" phx-value-id={faq.id} class="ml-2 font-bold">Upvote</button>
+  </:col>
   <:action :let={{_id, faq}}>
     <div class="sr-only">
       <.link navigate={~p"/faqs/#{faq}"}>Show</.link>

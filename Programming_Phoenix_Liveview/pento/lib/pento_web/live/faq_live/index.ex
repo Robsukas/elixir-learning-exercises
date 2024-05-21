@@ -44,4 +44,11 @@ defmodule PentoWeb.FAQLive.Index do
 
     {:noreply, stream_delete(socket, :faqs, faq)}
   end
+
+  @impl true
+  def handle_event("vote", %{"id" => id}, socket) do
+    faq = Support.get_faq!(id)
+    {:ok, _} = Support.increment_vote_count(faq)
+    {:noreply, stream(socket, :faqs, Support.list_faqs())}
+  end
 end

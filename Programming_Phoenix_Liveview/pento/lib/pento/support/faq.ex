@@ -5,7 +5,7 @@ defmodule Pento.Support.FAQ do
   schema "faqs" do
     field :question, :string
     field :answer, :string
-    field :vote_count, :integer
+    field :vote_count, :integer, default: 0
 
     timestamps(type: :utc_datetime)
   end
@@ -14,6 +14,6 @@ defmodule Pento.Support.FAQ do
   def changeset(faq, attrs) do
     faq
     |> cast(attrs, [:question, :answer, :vote_count])
-    |> validate_required([:question, :answer, :vote_count])
+    |> validate_required([:question, :answer])
   end
 end

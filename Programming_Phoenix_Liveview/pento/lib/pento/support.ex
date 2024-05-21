@@ -101,4 +101,10 @@ defmodule Pento.Support do
   def change_faq(%FAQ{} = faq, attrs \\ %{}) do
     FAQ.changeset(faq, attrs)
   end
+
+  def increment_vote_count(%FAQ{} = faq) do
+    faq
+    |> FAQ.changeset(%{vote_count: faq.vote_count + 1})
+    |> Repo.update()
+  end
 end

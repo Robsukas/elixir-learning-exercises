@@ -21,7 +21,6 @@ defmodule PentoWeb.FAQLive.FormComponent do
       >
         <.input field={@form[:question]} type="text" label="Question" />
         <.input field={@form[:answer]} type="text" label="Answer" />
-        <.input field={@form[:vote_count]} type="number" label="Vote count" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Faq</.button>
         </:actions>
