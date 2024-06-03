@@ -2,7 +2,7 @@ defmodule PentoWeb.FAQLiveTest do
   use PentoWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import Pento.SupportFixtures
+  import Pento.{SupportFixtures, AccountsFixtures}
 
   @create_attrs %{question: "some question", answer: "some answer", vote_count: 42}
   @update_attrs %{question: "some updated question", answer: "some updated answer", vote_count: 43}
@@ -11,6 +11,12 @@ defmodule PentoWeb.FAQLiveTest do
   defp create_faq(_) do
     faq = faq_fixture()
     %{faq: faq}
+  end
+
+  setup %{conn: conn} do
+    user = user_fixture()
+    conn = log_in_user(conn, user)
+    {:ok, conn: conn, user: user}
   end
 
   describe "Index" do
