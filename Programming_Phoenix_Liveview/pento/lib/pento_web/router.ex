@@ -13,6 +13,11 @@ defmodule PentoWeb.Router do
     plug :fetch_current_user
   end
 
+  pipeline :admin do
+    plug :fetch_current_user
+    plug :require_authenticated_user
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -72,19 +77,28 @@ defmodule PentoWeb.Router do
       live "/promo", PromoLive
       live "/survey", SurveyLive, :index
 
-      live "/products", ProductLive.Index, :index
-      live "/products/new", ProductLive.Index, :new
-      live "/products/:id/edit", ProductLive.Index, :edit
-
-      live "/products/:id", ProductLive.Show, :show
-      live "/products/:id/show/edit", ProductLive.Show, :edit
-
       live "/faqs", FAQLive.Index, :index
       live "/faqs/new", FAQLive.Index, :new
       live "/faqs/:id/edit", FAQLive.Index, :edit
 
       live "/faqs/:id", FAQLive.Show, :show
       live "/faqs/:id/show/edit", FAQLive.Show, :edit
+    end
+  end
+
+  scope "/", PentoWeb do
+    pipe_through [:browser, :admin]
+
+    live_session :admin,
+      on_mount: [{PentoWeb.UserAuth, :ensure_authenticated}, {PentoWeb.UserAuth, :ensure_admin}] do
+      live "/admin/dashboard", Admin.DashboardLive, :index
+
+      live "/products", ProductLive.Index, :index
+      live "/products/new", ProductLive.Index, :new
+      live "/products/:id/edit", ProductLive.Index, :edit
+
+      live "/products/:id", ProductLive.Show, :show
+      live "/products/:id/show/edit", ProductLive.Show, :edit
     end
   end
 

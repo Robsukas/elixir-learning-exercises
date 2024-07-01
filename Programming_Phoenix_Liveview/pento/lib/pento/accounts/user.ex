@@ -7,6 +7,7 @@ defmodule Pento.Accounts.User do
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
+    field :is_admin, :boolean, default: false
 
     timestamps(type: :utc_datetime)
   end
@@ -36,7 +37,7 @@ defmodule Pento.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :password, :is_admin])
     |> validate_email(opts)
     |> validate_password(opts)
   end
