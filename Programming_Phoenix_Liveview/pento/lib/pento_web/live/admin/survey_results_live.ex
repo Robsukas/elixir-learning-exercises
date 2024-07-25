@@ -1,5 +1,6 @@
 defmodule PentoWeb.Admin.SurveyResultsLive do
   use PentoWeb, :live_component
+  use PentoWeb, :chart_live
 
   alias Pento.Catalog
   alias Contex.Plot
@@ -8,17 +9,53 @@ defmodule PentoWeb.Admin.SurveyResultsLive do
     {:ok,
       socket
       |> assign(assigns)
+      |> assign_age_group_filter()
       |> assign_products_with_average_ratings()
       |> assign_dataset()
       |> assign_chart()
       |> assign_chart_svg()}
   end
 
-  defp assign_products_with_average_ratings(socket) do
+  def handle_event(
+      "age_group_filter",
+      %{"age_group_filter" => age_group_filter},
+      socket
+    ) do
+    {:noreply,
+      socket
+      |> assign_age_group_filter(age_group_filter)
+      |> assign_products_with_average_ratings()
+      |> assign_dataset()
+      |> assign_chart()
+      |> assign_chart_svg()}
+  end
+
+  def assign_age_group_filter(socket) do
     socket
-    |> assign(
+    |> assign(:age_group_filter, "all")
+  end
+
+  def assign_age_group_filter(socket, age_group_filter) do
+    assign(socket, :age_group_filter, age_group_filter)
+  end
+
+  defp assign_products_with_average_ratings(
+      %{assigns: %{age_group_filter: age_group_filter}} =
+      socket) do
+    assign(
+      socket,
       :products_with_average_ratings,
-      Catalog.products_with_average_ratings())
+      get_products_with_average_ratings(%{age_group_filter: age_group_filter})
+    )
+  end
+
+  defp get_products_with_average_ratings(filter) do
+    case Catalog.products_with_average_ratings(filter) do
+        [] ->
+          Catalog.products_with_zero_ratings()
+        products ->
+          products
+    end
   end
 
   def assign_dataset(
@@ -32,41 +69,29 @@ defmodule PentoWeb.Admin.SurveyResultsLive do
       )
   end
 
-  def assign_chart_svg(%{assigns: %{chart: chart}} = socket) do
-    socket
-    |> assign(:chart_svg, render_bar_chart(chart))
-  end
-
   defp assign_chart(%{assigns: %{dataset: dataset}} = socket) do
     socket
     |> assign(:chart, make_bar_chart(dataset))
   end
 
-  defp make_bar_chart_dataset(data) do
-    Contex.Dataset.new(data)
-  end
-
-  defp make_bar_chart(dataset) do
-    Contex.BarChart.new(dataset)
-  end
-
-  defp render_bar_chart(chart) do
-    Plot.new(500, 400, chart)
-    |> Plot.titles(title(), subtitle())
-    |> Plot.axis_labels(x_axis(), y_axis())
-    |> Plot.to_svg()
+  def assign_chart_svg(%{assigns: %{chart: chart}} = socket) do
+    socket
+    |> assign(
+      :chart_svg,
+      render_bar_chart(chart, title(), subtitle(), x_axis(), y_axis())
+    )
   end
 
   defp title do
-    "Product Ratings"
+    "Survey results"
   end
 
   defp subtitle do
-    "average star ratings per product"
+    "Average star ratings for products"
   end
 
   defp x_axis do
-    "products"
+    "product"
   end
 
   defp y_axis do
