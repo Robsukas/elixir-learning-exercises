@@ -91,6 +91,34 @@ defmodule Pento.Catalog.Product.Query do
     query
   end
 
+  def filter_by_gender(query \\ base(), filter) do
+
+    IO.inspect(apply_gender_filter(query, filter), label: "Filtered query")
+
+    query
+    |> apply_gender_filter(filter)
+  end
+
+  defp apply_gender_filter(query, "male") do
+    from p in query, where: p.gender == "male"
+  end
+
+  defp apply_gender_filter(query, "female") do
+    from p in query, where: p.gender == "female"
+  end
+
+  defp apply_gender_filter(query, "other") do
+    from p in query, where: p.gender == "other"
+  end
+
+  defp apply_gender_filter(query, "prefer not to say") do
+    from p in query, where: p.gender == "prefer not to say"
+  end
+
+  defp apply_gender_filter(query, _filter) do
+    query
+  end
+
   def with_zero_ratings(query \\ base()) do
     query
     |> select([p], {p.name, 0})

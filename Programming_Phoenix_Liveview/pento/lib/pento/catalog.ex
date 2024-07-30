@@ -107,12 +107,33 @@ defmodule Pento.Catalog do
     |> Repo.all()
   end
 
-  def products_with_average_ratings(%{ age_group_filter: age_group_filter}) do
-    Product.Query.with_average_ratings()
-    |> Product.Query.join_users()
-    |> Product.Query.join_demographics()
-    |> Product.Query.filter_by_age_group(age_group_filter)
-    |> Repo.all()
+  def products_with_average_ratings(filters) do
+    IO.inspect(filters, label: "Filters in products_with_average_ratings")  # Debugging
+    query =
+      Product.Query.with_average_ratings()
+      |> Product.Query.join_users()
+      |> Product.Query.join_demographics()
+
+    query =
+      case filters do
+        %{age_group_filter: age_group_filter, gender_filter: gender_filter} ->
+          query
+          |> Product.Query.filter_by_age_group(age_group_filter)
+          |> Product.Query.filter_by_gender(gender_filter)
+
+        %{age_group_filter: age_group_filter} ->
+          query
+          |> Product.Query.filter_by_age_group(age_group_filter)
+
+        %{gender_filter: gender_filter} ->
+          query
+          |> Product.Query.filter_by_gender(gender_filter)
+
+        _ ->
+          query
+      end
+
+    Repo.all(query)
   end
 
   def products_with_zero_ratings do

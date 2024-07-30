@@ -2,7 +2,6 @@
     <h2 class="font-light text-2xl">Survey Results</h2>
     <div id="survey-results-component">
         <div class="container"> 
-            <!-- 
             <div> 
                 <.form
                     for={%{}}
@@ -14,12 +13,11 @@
                     <label>By gender:</label>
                     <select name="gender_filter" id="gender_filter">
                         <%= for gender <-
-                            [
-                                "all",
-                                "female",
-                                "male",
-                                "other",
-                                "prefer not to say"
+                            ["all",
+                            "female",
+                            "male",
+                            "other",
+                            "prefer not to say"
                             ] do %>
                             <option value={gender} selected={@gender_filter == gender}>
                               <%= gender %>
@@ -28,7 +26,6 @@
                     </select>
                 </.form>
             </div>
-            -->
             <div> 
                 <.form
                     for={%{}} 
