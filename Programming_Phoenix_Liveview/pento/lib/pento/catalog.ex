@@ -108,7 +108,6 @@ defmodule Pento.Catalog do
   end
 
   def products_with_average_ratings(filters) do
-    IO.inspect(filters, label: "Filters in products_with_average_ratings")  # Debugging
     query =
       Product.Query.with_average_ratings()
       |> Product.Query.join_users()
