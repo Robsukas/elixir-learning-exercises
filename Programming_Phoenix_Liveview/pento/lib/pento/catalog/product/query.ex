@@ -45,7 +45,6 @@ defmodule Pento.Catalog.Product.Query do
     |> join(:left, [p, r, u, d], d in Demographic, on: d.user_id == u.id)
   end
 
-
   def filter_by_age_group(query \\ base(), filter) do
     query
     |> apply_age_group_filter(filter)
@@ -92,27 +91,25 @@ defmodule Pento.Catalog.Product.Query do
   end
 
   def filter_by_gender(query \\ base(), filter) do
-
-    IO.inspect(apply_gender_filter(query, filter), label: "Filtered query")
-
     query
+    |> join_demographics()
     |> apply_gender_filter(filter)
   end
 
   defp apply_gender_filter(query, "male") do
-    from p in query, where: p.gender == "male"
+    from [p, r, u, d] in query, where: d.gender == "male"
   end
 
   defp apply_gender_filter(query, "female") do
-    from p in query, where: p.gender == "female"
+    from [p, r, u, d] in query, where: d.gender == "female"
   end
 
   defp apply_gender_filter(query, "other") do
-    from p in query, where: p.gender == "other"
+    from [p, r, u, d] in query, where: d.gender == "other"
   end
 
   defp apply_gender_filter(query, "prefer not to say") do
-    from p in query, where: p.gender == "prefer not to say"
+    from [p, r, u, d] in query, where: d.gender == "prefer_not_to_say"
   end
 
   defp apply_gender_filter(query, _filter) do
