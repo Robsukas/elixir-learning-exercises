@@ -3,7 +3,7 @@ defmodule PentoWeb.SurveyLive do
 
   alias PentoWeb.SurveyLive.Component
   alias Pento.{Survey, Catalog}
-  alias PentoWeb.{DemographicLive, RatingLive, Endpoint}
+  alias PentoWeb.{DemographicLive, Endpoint}
   alias PentoWeb.RatingLive.Show
 
   @survey_results_topic "survey_results"

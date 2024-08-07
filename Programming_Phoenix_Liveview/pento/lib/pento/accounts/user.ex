@@ -103,6 +103,11 @@ defmodule Pento.Accounts.User do
     end
   end
 
+  def is_admin_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:is_admin])
+  end
+
   @doc """
   A user changeset for changing the password.
 
