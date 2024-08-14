@@ -33,11 +33,6 @@ defmodule Pento.Game.Board do
 
   def to_shapes(board) do
     board_shape = to_shape(board)
-    pento_shapes = [board.active_pento|board.completed_pentos]
-  end
-
-  def to_shapes(board) do
-    board_shape = to_shape(board)
     pento_shapes =
       [board.active_pento|board.completed_pentos]
       |> Enum.reverse
