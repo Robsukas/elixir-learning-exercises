@@ -1,5 +1,5 @@
 # elixir-learning-exercises
-This repository contains exercises and learning processes from "The Complete Elixir and Phoenix Bootcamp course" on Udemy, the book "Elixir in Action" by Saša Jurić, the book "Phoenix In Action" by Geoffrey Lessel and Elixir on Exercism.
+This repository contains exercises and learning processes from "The Complete Elixir and Phoenix Bootcamp course" on Udemy, Elixir exercises from Exercism and the books: "Elixir in Action" by Saša Jurić, "Phoenix in Action" by Geoffrey Lessel and "Programming Phoenix Liveview" by Bruce A. Tate.
 
 Each of the directories have their own README files for further information, kindly read through those aswell.
 
